@@ -27,7 +27,7 @@ function App() {
               pokemon ? (
                   <div>
                       <p>Name: {pokemon.name}</p>
-                      <img src={pokemon.url} class={"pokemonImage"}/>
+                      <img src={pokemon.url} className="pokemonImage"/>
                   </div>
               ) : (
                   <p>Drawing pokemon...</p>
