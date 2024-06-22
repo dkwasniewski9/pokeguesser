@@ -14,7 +14,7 @@ export const getRandomPokemon = async(): Promise<Pokemon> => {
         height: responsePokemon.height,
         weight: responsePokemon.weight,
         url: responsePokemon.sprites.other['official-artwork'].front_default,
-        types: responsePokemon.types.map(typeInfo => typeInfo.type.name),
+        types: responsePokemon.types.map((typeInfo: any) => typeInfo.type.name),
         generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
         color: responseSpecies.color.name
     }
@@ -32,7 +32,7 @@ export const checkPokemonExistance = async(name: string): Promise<boolean | Poke
             height: responsePokemon.height,
             weight: responsePokemon.weight,
             url: responsePokemon.sprites.other['official-artwork'].front_default,
-            types: responsePokemon.types.map(typeInfo => typeInfo.type.name),
+            types: responsePokemon.types.map((typeInfo: any) => typeInfo.type.name),
             generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
             color: responseSpecies.color.name
         }

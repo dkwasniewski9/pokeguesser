@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 import './styles/App.css'
 import {getRandomPokemon} from "./services/pokemonService.tsx";
 import Pokemon from "./types/Pokemon.tsx";
-import GuessInput from "./components/GuessInput.tsx";
 
 
 
