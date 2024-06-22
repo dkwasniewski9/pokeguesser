@@ -15,7 +15,6 @@ function App() {
             }catch (err) {
                 console.error("Failed fetching pokemon", err)
             }
-            console.log('losowanko')
         }
         fetchedPokemon()
     }, [])
@@ -26,8 +25,23 @@ function App() {
           {
               pokemon ? (
                   <div>
-                      <p>Name: {pokemon.name}</p>
-                      <img src={pokemon.url} className="pokemonImage"/>
+                      <table className="pokemon-table">
+                          <tbody>
+                          <tr>
+                              <td style={{ whiteSpace: 'nowrap' }}>
+                                  <p><strong>Name:</strong> {pokemon.name}</p>
+                                  <p><strong>Height:</strong> {pokemon.height}</p>
+                                  <p><strong>Weight:</strong> {pokemon.weight}</p>
+                                  <p><strong>Types:</strong> {pokemon.types.join(', ')}</p>
+                                  <p><strong>Generation:</strong> {pokemon.generation}</p>
+                                  <p><strong>Color:</strong> {pokemon.color}</p>
+                              </td>
+                              <td style={{ paddingLeft: '10px' }}>
+                                  <img src={pokemon.url} alt={pokemon.name} className="pokemonImage" style={{ maxWidth: '200px' }} />
+                              </td>
+                          </tr>
+                          </tbody>
+                      </table>
                   </div>
               ) : (
                   <p>Drawing pokemon...</p>
