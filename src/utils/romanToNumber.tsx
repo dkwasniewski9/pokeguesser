@@ -1,5 +1,5 @@
 export function romanToNumber(roman: string) {
-    const romanMap = {
+    const romanMap:Record<string, number>  = {
         'i': 1,
         'v': 5,
         'x': 10

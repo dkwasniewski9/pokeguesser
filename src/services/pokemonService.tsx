@@ -37,7 +37,7 @@ export const checkPokemonExistance = async(name: string): Promise<boolean | Poke
             color: responseSpecies.color.name
         }
     }
-    catch (error){
+    catch (error: any){
         if(error.status == 404){
             return false
         }
