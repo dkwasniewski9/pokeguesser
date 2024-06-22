@@ -10,12 +10,37 @@ export const getRandomPokemon = async(): Promise<Pokemon> => {
         .then((response) => response.json())
     return {
         dexNumber: dexNumber,
-        name: responsePokemon.name,
+        name: responsePokemon.species.name,
         height: responsePokemon.height,
         weight: responsePokemon.weight,
         url: responsePokemon.sprites.other['official-artwork'].front_default,
         types: responsePokemon.types.map(typeInfo => typeInfo.type.name),
         generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
         color: responseSpecies.color.name
+    }
+}
+
+
+export const checkPokemonExistance = async(name: string): Promise<boolean | Pokemon> => {
+    try{
+        const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((response) => response.json())
+        const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+            .then((response) => response.json())
+        return {
+            dexNumber: responsePokemon.id,
+            name: responsePokemon.species.name,
+            height: responsePokemon.height,
+            weight: responsePokemon.weight,
+            url: responsePokemon.sprites.other['official-artwork'].front_default,
+            types: responsePokemon.types.map(typeInfo => typeInfo.type.name),
+            generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
+            color: responseSpecies.color.name
+        }
+    }
+    catch (error){
+        if(error.status == 404){
+            return false
+        }
+        else throw new Error('Something went wrong')
     }
 }
