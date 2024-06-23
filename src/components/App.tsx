@@ -39,6 +39,12 @@ function App() {
             generation: '',
             color: ''
         }
+        for (const key in pokemonInfo) {
+            const typedKey = key as keyof Hints;
+            if (typedKey in hints) {
+                hints[typedKey] = getHint(pokemonInfo[typedKey], pokemon[typedKey]);
+            }
+        }
         Object.keys(pokemonInfo).forEach((key: keyof Hints) =>{
             hints[key] = getHint(pokemonInfo[key], pokemon[key]);
         })
