@@ -45,9 +45,6 @@ function App() {
                 hints[typedKey] = getHint(pokemonInfo[typedKey], pokemon[typedKey]);
             }
         }
-        Object.keys(pokemonInfo).forEach((key: keyof Hints) =>{
-            hints[key] = getHint(pokemonInfo[key], pokemon[key]);
-        })
         setGuesses([...guesses, {pokemon: pokemonInfo, hints: hints}])
     };
     return (
