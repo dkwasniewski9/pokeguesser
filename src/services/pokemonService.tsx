@@ -19,7 +19,7 @@ export const getRandomPokemon = async(): Promise<Pokemon> => {
         color: responseSpecies.color.name
     }
 }
-export const getPokemonInfo = async(name): Promise<Pokemon> => {
+export const getPokemonInfo = async(name: string): Promise<Pokemon> => {
     const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
         .then((response) => response.json())
     const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)

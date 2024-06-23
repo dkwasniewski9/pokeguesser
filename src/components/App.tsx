@@ -22,7 +22,7 @@ function App() {
         fetchedPokemon()
     }, [])
 
-    const handlePokemonCheck = async (input) => {
+    const handlePokemonCheck = async (input: string) => {
         if (!(pokemon) || input == pokemon.name) {
             return
         }
