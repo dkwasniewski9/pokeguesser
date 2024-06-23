@@ -39,7 +39,7 @@ function App() {
             generation: '',
             color: ''
         }
-        Object.keys(pokemonInfo).forEach(key =>{
+        Object.keys(pokemonInfo).forEach((key: string) =>{
             hints[key] = getHint(pokemonInfo[key], pokemon[key])
         })
         setGuesses([...guesses, {pokemon: pokemonInfo, hints: hints}])
