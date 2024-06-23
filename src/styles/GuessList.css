@@ -1,0 +1,36 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    color: black;
+    font-weight: bold;
+}
+.wrong {
+    background-color: red;
+}
+
+.lower {
+    background-color: red;
+    background-image: url("public/down_arrow.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.higher {
+    background-color: red;
+    background-image: url("public/down_arrow.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.partial {
+    background-color: yellow;
+}
+
+.correct {
+    background-color: green;
+}

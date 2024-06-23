@@ -1,8 +1,9 @@
 import React from "react";
-import Pokemon from "../types/Pokemon.tsx";
+import '../styles/GuessList.css'
+import PokemonWithHints from "../types/PokemonWithHints.tsx";
 
 interface GuessListProps {
-    guesses: Pokemon[];
+    guesses: PokemonWithHints[];
 }
 
 
@@ -14,27 +15,27 @@ const GuessList: React.FC<GuessListProps> = (props: GuessListProps) => {
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Height</th>
                     <th>Weight</th>
                     <th>Types</th>
                     <th>Generation</th>
                     <th>Color</th>
-                    <th>Image</th>
                 </tr>
                 </thead>
                 <tbody>
                 {props.guesses.length > 0 ? (
-                        props.guesses.map((pokemon, index) => (
+                        props.guesses.map((guess, index) => (
                             <tr key={index}>
-                                <td>{pokemon.dexNumber}</td>
-                                <td><img src={pokemon.url} alt={pokemon.name} style={{ maxWidth: '100px' }} /></td>
-                                <td>{pokemon.name}</td>
-                                <td>{pokemon.height}</td>
-                                <td>{pokemon.weight}</td>
-                                <td>{pokemon.types.join(', ')}</td>
-                                <td>{pokemon.generation}</td>
-                                <td>{pokemon.color}</td>
+                                <td className={guess.hints.dexNumber}>{guess.pokemon.dexNumber}</td>
+                                <td className={guess.hints.name}><img src={guess.pokemon.url} alt={guess.pokemon.name} style={{ maxWidth: '100px' }} /></td>
+                                <td className={guess.hints.name}>{guess.pokemon.name}</td>
+                                <td className={guess.hints.height}>{guess.pokemon.height}</td>
+                                <td className={guess.hints.weight}>{guess.pokemon.weight}</td>
+                                <td className={guess.hints.types}>{guess.pokemon.types.join(', ')}</td>
+                                <td className={guess.hints.generation}>{guess.pokemon.generation}</td>
+                                <td className={guess.hints.color}>{guess.pokemon.color}</td>
                             </tr>
                         ))
                     ) : (

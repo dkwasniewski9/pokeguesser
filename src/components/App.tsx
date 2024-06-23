@@ -4,12 +4,15 @@ import {getPokemonInfo, getRandomPokemon} from "../services/pokemonService.tsx";
 import Pokemon from "../types/Pokemon.tsx";
 import Form from "./GuessInput.tsx";
 import GuessList from "./GuessList.tsx";
+import PokemonWithHints from "../types/PokemonWithHints.tsx";
+import {getHint} from "../utils/getHint.tsx";
+import Hints from "../types/Hints.tsx";
 
 
 
 function App() {
     const [pokemon, setPokemon] = useState<Pokemon | null>(null)
-    const [guesses, setGuesses] = useState<Pokemon[]>([])
+    const [guesses, setGuesses] = useState<PokemonWithHints[]>([])
     useEffect(() => {
         const fetchedPokemon = async (): Promise<void> => {
             try{
@@ -27,7 +30,19 @@ function App() {
             return
         }
         const pokemonInfo = await getPokemonInfo(input)
-        setGuesses([...guesses, pokemonInfo])
+        const hints:Hints = {
+            dexNumber: '',
+            name: '',
+            height: '',
+            weight: '',
+            types: '',
+            generation: '',
+            color: ''
+        }
+        Object.keys(pokemonInfo).forEach(key =>{
+            hints[key] = getHint(pokemonInfo[key], pokemon[key])
+        })
+        setGuesses([...guesses, {pokemon: pokemonInfo, hints: hints}])
     };
     return (
     <>
