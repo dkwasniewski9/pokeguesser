@@ -40,7 +40,9 @@ function App() {
             color: ''
         }
         Object.keys(pokemonInfo).forEach((key: string) =>{
-            hints[key as keyof Hints] = getHint(pokemonInfo[key], pokemon[key]);
+            if (key in hints && key in pokemonInfo) {
+                hints[key as keyof Hints] = getHint(pokemonInfo[key], pokemon[key]);
+            }
         })
         setGuesses([...guesses, {pokemon: pokemonInfo, hints: hints}])
     };
