@@ -1,12 +1,15 @@
 import {useEffect, useState} from 'react'
-import './styles/App.css'
-import {getRandomPokemon} from "./services/pokemonService.tsx";
-import Pokemon from "./types/Pokemon.tsx";
+import '../styles/App.css'
+import {getPokemonInfo, getRandomPokemon} from "../services/pokemonService.tsx";
+import Pokemon from "../types/Pokemon.tsx";
+import Form from "./GuessInput.tsx";
+import GuessList from "./GuessList.tsx";
 
 
 
 function App() {
     const [pokemon, setPokemon] = useState<Pokemon | null>(null)
+    const [guesses, setGuesses] = useState<Pokemon[]>([])
     useEffect(() => {
         const fetchedPokemon = async (): Promise<void> => {
             try{
@@ -19,9 +22,17 @@ function App() {
         fetchedPokemon()
     }, [])
 
-  return (
+    const handlePokemonCheck = async (input) => {
+        if (!(pokemon) || input == pokemon.name) {
+            return
+        }
+        const pokemonInfo = await getPokemonInfo(input)
+        setGuesses([...guesses, pokemonInfo])
+    };
+    return (
     <>
       <div>
+          <Form sendGuess={handlePokemonCheck} />
           {
               pokemon ? (
                   <div>
@@ -48,6 +59,7 @@ function App() {
               )
           }
       </div>
+        <div><GuessList guesses={guesses} /></div>
     </>
   )
 }

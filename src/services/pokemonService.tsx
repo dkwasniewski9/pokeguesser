@@ -19,28 +19,24 @@ export const getRandomPokemon = async(): Promise<Pokemon> => {
         color: responseSpecies.color.name
     }
 }
-
-
-export const checkPokemonExistance = async(name: string): Promise<boolean | Pokemon> => {
-    try{
-        const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((response) => response.json())
-        const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
-            .then((response) => response.json())
-        return {
-            dexNumber: responsePokemon.id,
-            name: responsePokemon.species.name,
-            height: responsePokemon.height,
-            weight: responsePokemon.weight,
-            url: responsePokemon.sprites.other['official-artwork'].front_default,
-            types: responsePokemon.types.map((typeInfo: any) => typeInfo.type.name),
-            generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
-            color: responseSpecies.color.name
-        }
+export const getPokemonInfo = async(name): Promise<Pokemon> => {
+    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        .then((response) => response.json())
+    const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+        .then((response) => response.json())
+    return {
+        dexNumber: responsePokemon.id,
+        name: responsePokemon.species.name,
+        height: responsePokemon.height,
+        weight: responsePokemon.weight,
+        url: responsePokemon.sprites.other['official-artwork'].front_default,
+        types: responsePokemon.types.map((typeInfo: any) => typeInfo.type.name),
+        generation: romanToNumber(responseSpecies.generation.name.split('-')[1]),
+        color: responseSpecies.color.name
     }
-    catch (error: any){
-        if(error.status == 404){
-            return false
-        }
-        else throw new Error('Something went wrong')
-    }
+}
+
+export const checkPokemonExistance = async(name: string): Promise<boolean> => {
+    const responsePokemon: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    return responsePokemon.ok
 }
