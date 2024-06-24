@@ -6,7 +6,7 @@ export function getHint(guess: string | number | string[], correct: string | num
             return 'wrong'
     }
     else if(typeof guess === 'number'){
-        if(guess < correct){
+        if(Number(guess) < correct){
             return 'higher'
         }
         else{
