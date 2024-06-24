@@ -2,9 +2,6 @@ export function getHint(guess: string | number | string[], correct: string | num
     if(guess === correct ){
         return 'correct'
     }
-    if(typeof guess === 'string'){
-            return 'wrong'
-    }
     else if(typeof guess === 'number' && typeof correct === 'number'){
         if(Number(guess) < correct){
             return 'higher'
@@ -17,8 +14,6 @@ export function getHint(guess: string | number | string[], correct: string | num
         if(guess.some(type  => (correct as string[]).includes(type))){
             return 'partial'
         }
-        else{
-            return 'wrong'
-        }
     }
+    return 'wrong'
 }
