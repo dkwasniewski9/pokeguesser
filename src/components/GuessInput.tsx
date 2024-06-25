@@ -22,6 +22,7 @@ const Form:React.FC<FormProps> = (props: FormProps) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <label htmlFor="pokemon-input">Enter Pokemon Name: </label>
                 <input
                     type="text"
                     value={input}
