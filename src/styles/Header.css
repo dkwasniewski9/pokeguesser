@@ -1,0 +1,28 @@
+.header-container {
+    width: 100%;
+    background-color: #f0f8ff;
+    height: 10vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.header-title {
+    color: #333;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+}

@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import {checkPokemonExistance} from "../services/pokemonService.tsx";
+import "../styles/GuessInput.css"
+
 interface FormProps {
     sendGuess: (pokemonName: string) => void;
 }
-const Form:React.FC<FormProps> = (props: FormProps) => {
+
+const Form: React.FC<FormProps> = (props: FormProps) => {
     const [input, setInput] = useState<string>('')
     const [error, setError] = useState<string>('');
 
@@ -11,7 +14,7 @@ const Form:React.FC<FormProps> = (props: FormProps) => {
         event.preventDefault();
         const lowerCaseInput = input.toLowerCase()
         const exist: boolean = await checkPokemonExistance(lowerCaseInput)
-        if(!exist){
+        if (!exist) {
             setError('Pokemon does not exist! Try again')
             return
         }
@@ -20,18 +23,20 @@ const Form:React.FC<FormProps> = (props: FormProps) => {
         props.sendGuess(lowerCaseInput)
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="pokemon-input">Enter Pokemon Name: </label>
+        <div className="form-container">
+            <form className="form" onSubmit={handleSubmit}>
+                <label htmlFor="pokemon-input" className="form-label">Enter Pokemon Name:</label>
                 <input
+                    id="pokemon-input"
                     type="text"
                     value={input}
                     onChange={(event) => setInput(event.target.value)}
+                    className="form-input"
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" className="form-button">Submit</button>
             </form>
-            <div>{error && <p style={{ color: 'red' }}>{error}</p>}</div>
+            {error && <p className="form-error">{error}</p>}
         </div>
-        )
+    )
 }
 export default Form

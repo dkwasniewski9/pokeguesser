@@ -1,5 +1,5 @@
 export function romanToNumber(roman: string) {
-    const romanMap:Record<string, number>  = {
+    const romanMap: Record<string, number> = {
         'i': 1,
         'v': 5,
         'x': 10
@@ -7,12 +7,11 @@ export function romanToNumber(roman: string) {
 
     let total = 0
     let previousValue = 0
-    for (let i = roman.length - 1; i >= 0; --i){
+    for (let i = roman.length - 1; i >= 0; --i) {
         const currentValue = romanMap[roman[i]]
         if (currentValue < previousValue) {
             total -= currentValue
-        }
-        else {
+        } else {
             total += currentValue
         }
         previousValue = currentValue

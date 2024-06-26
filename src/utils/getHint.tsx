@@ -1,17 +1,14 @@
-export function getHint(guess: string | number | string[], correct: string | number | string[]): string{
-    if(guess === correct ){
+export function getHint(guess: string | number | string[], correct: string | number | string[]): string {
+    if (guess.toString() === correct.toString()) {
         return 'correct'
-    }
-    else if(typeof guess === 'number' && typeof correct === 'number'){
-        if(Number(guess) < correct){
+    } else if (typeof guess === 'number' && typeof correct === 'number') {
+        if (Number(guess) < correct) {
             return 'higher'
-        }
-        else{
+        } else {
             return 'lower'
         }
-    }
-    else if(Array.isArray(guess) && Array.isArray(correct)){
-        if(guess.some(type  => (correct as string[]).includes(type))){
+    } else if (Array.isArray(guess) && Array.isArray(correct)) {
+        if (guess.some(type => (correct as string[]).includes(type))) {
             return 'partial'
         }
     }

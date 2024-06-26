@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react'
-import '../styles/App.css'
 import {getPokemonInfo, getRandomPokemon} from "../services/pokemonService.tsx";
 import Pokemon from "../types/Pokemon.tsx";
 import Form from "./GuessInput.tsx";
@@ -8,7 +7,7 @@ import PokemonWithHints from "../types/PokemonWithHints.tsx";
 import {getHint} from "../utils/getHint.tsx";
 import Hints from "../types/Hints.tsx";
 import Win from "./Win.tsx";
-
+import '../styles/App.css';
 
 
 function App() {
@@ -16,15 +15,15 @@ function App() {
     const [guesses, setGuesses] = useState<PokemonWithHints[]>([])
     const [isGameActive, setGameStatus] = useState<boolean>(true)
     useEffect(() => {
-        if(!isGameActive){
+        if (!isGameActive) {
             return
         }
         const fetchedPokemon = async (): Promise<void> => {
-            try{
+            try {
                 const pokemon = await getRandomPokemon()
                 setPokemon(pokemon)
                 console.log(pokemon.name)
-            }catch (err) {
+            } catch (err) {
                 console.error("Failed fetching pokemon", err)
             }
         }
@@ -38,12 +37,15 @@ function App() {
         setGameStatus(true)
     }
     const handlePokemonCheck = async (input: string) => {
-        if(pokemon){
+        if (pokemon) {
+            if(guesses.find(pokemonWithHints => pokemonWithHints.pokemon.name === input)){
+                return
+            }
             if (input == pokemon.name) {
                 setGameStatus(false)
             }
             const pokemonInfo = await getPokemonInfo(input)
-            const hints:Hints = {
+            const hints: Hints = {
                 dexNumber: '',
                 name: '',
                 height: '',
@@ -63,22 +65,28 @@ function App() {
 
     };
     return (
-    <>
-
-        {isGameActive ? (
-            pokemon ? (
-                <div>
-                    <Form sendGuess={handlePokemonCheck} />
-                    <GuessList guesses={guesses} />
-                </div>
-            ) : (
-                <p>Drawing pokemon...</p>
-            )
-        ) : (
-            <Win sendRestart={handleRestart} pokemon={pokemon} />
-        )}
-    </>
-  )
+        <>
+            <div className="container">
+                {isGameActive ? (
+                    pokemon ? (
+                        <div>
+                            <Form sendGuess={handlePokemonCheck}/>
+                            <GuessList guesses={guesses}/>
+                        </div>
+                    ) : (
+                        <p className="loading-message">Drawing pokemon...</p>
+                    )
+                ) : (
+                    <Win sendRestart={handleRestart} pokemon={pokemon}/>
+                )}
+                {!isGameActive && (
+                    <button className="restart-button" onClick={handleRestart}>
+                        Restart Game
+                    </button>
+                )}
+            </div>
+        </>
+    )
 }
 
 export default App

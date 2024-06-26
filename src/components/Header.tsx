@@ -1,13 +1,13 @@
+import '../styles/Header.css';
 
-const Header = () =>{
+const Header = () => {
     return (
-        <div>
-            <header>
-                <h1>Pokeguesser</h1>
+        <div className="header-container">
+            <header className="header">
+                <h1 className="header-title">Pokeguesser</h1>
             </header>
         </div>
-
-    )
+    );
 }
 
 export default Header

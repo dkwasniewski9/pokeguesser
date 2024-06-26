@@ -1,36 +1,40 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
+.guess-list-container {
+    margin-top: 20px;
 }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    color: black;
-    font-weight: bold;
+.guess-list-container h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
 }
+
+.guess-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.guess-table th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
 .wrong {
-    background-color: red;
+    background-color: lightcoral;
 }
 
 .lower {
-    background-color: red;
-    background-image: url("/public/down_arrow.png");
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: lightcoral;
 }
-
 .higher {
-    background-color: red;
-    background-image: url("/public/up_arrow.png");
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: lightcoral;
 }
 
 .partial {
-    background-color: yellow;
+    background-color: lightgoldenrodyellow;
 }
 
 .correct {
-    background-color: green;
+    background-color: lightgreen;
 }

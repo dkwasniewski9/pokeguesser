@@ -1,4 +1,4 @@
-interface Hints{
+interface Hints {
     dexNumber: string;
     name: string;
     height: string;
@@ -7,4 +7,5 @@ interface Hints{
     generation: string;
     color: string;
 }
+
 export default Hints
