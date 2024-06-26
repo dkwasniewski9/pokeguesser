@@ -24,6 +24,7 @@ const Form:React.FC<FormProps> = (props: FormProps) => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="pokemon-input">Enter Pokemon Name: </label>
                 <input
+                    id="pokemon-input"
                     type="text"
                     value={input}
                     onChange={(event) => setInput(event.target.value)}
