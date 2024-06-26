@@ -8,6 +8,7 @@ import {getHint} from "../utils/getHint.tsx";
 import Hints from "../types/Hints.tsx";
 import Win from "./Win.tsx";
 import '../styles/App.css';
+import React from 'react';
 
 
 function App() {
