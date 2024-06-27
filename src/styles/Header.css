@@ -8,21 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1vh;
 }
 
 .header-title {
     color: #333;
     font-size: 2rem;
-}
-
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 0.5rem;
-    }
-
-    .header-title {
-        font-size: 1.5rem;
-    }
 }

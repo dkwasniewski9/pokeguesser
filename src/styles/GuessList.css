@@ -3,7 +3,7 @@
 }
 
 .guess-list-container h2 {
-    font-size: 1.5rem;
+    font-size: 2vh;
     color: #333;
     margin-bottom: 10px;
 }
@@ -11,14 +11,19 @@
 .guess-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .guess-table th, td {
-    padding: 12px;
+    padding: 1vh;
     border: 1px solid #ddd;
+    font-size: 2vh;
     text-align: center;
+    font-weight: bold;
 }
-
+.guess-table img {
+    width: 100%;
+}
 
 .wrong {
     background-color: lightcoral;
@@ -37,4 +42,44 @@
 
 .correct {
     background-color: lightgreen;
+}
+
+@media screen and (max-width: 800px) {
+    .guess-table, .guess-table thead, .guess-table tbody, .guess-table th, .guess-table td, .guess-table tr {
+        display: block;
+    }
+
+    .guess-table tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ddd;
+        margin-bottom: 1vh;
+    }
+
+    .guess-table th, .guess-table td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .guess-table td {
+        text-align: center;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .guess-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1vh;
+        font-weight: bold;
+        text-align: center;
+    }
+    .guess-table thead {
+        display: none;
+    }
+    .no-guess {
+        display: none
+    }
 }

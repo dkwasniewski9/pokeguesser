@@ -18,8 +18,7 @@
 }
 
 .pokemon-table {
-    width: 100%;
-    max-width: 600px;
+    width: 50%;
     margin-top: 1rem;
     border-collapse: collapse;
 }
@@ -40,10 +39,26 @@
 }
 
 .pokemon-image-img {
-    max-width: 200px;
+    width: 100%;
     border-radius: 4px;
 }
 
 .win-button:hover {
     background-color: #e0f0ff;
+}
+
+@media screen and (max-width: 800px) {
+    .pokemon-table{
+        width: 100%;
+    }
+    .pokemon-table td{
+        width: 50%;
+    }
+    .pokemon-table p{
+        font-size: 1vh;
+        font-weight: bold;
+    }
+    .pokemon-table img{
+        width:100%
+    }
 }
