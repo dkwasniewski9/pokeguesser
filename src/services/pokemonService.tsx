@@ -37,6 +37,10 @@ export const getPokemonInfo = async (name: string): Promise<Pokemon> => {
 }
 
 export const checkPokemonExistence = async (name: string): Promise<boolean> => {
-    const responsePokemon: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-    return responsePokemon.ok
+    try{
+        const responsePokemon: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+        return responsePokemon.ok
+    } catch(error){
+        return false
+    }
 }
