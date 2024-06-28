@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {checkPokemonExistance} from "../services/pokemonService.tsx";
+import {checkPokemonExistence} from "../services/pokemonService.tsx";
 import "../styles/GuessInput.css"
 
 interface FormProps {
@@ -13,7 +13,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         const lowerCaseInput = input.toLowerCase()
-        const exist: boolean = await checkPokemonExistance(lowerCaseInput)
+        const exist: boolean = await checkPokemonExistence(lowerCaseInput)
         if (!exist) {
             setError('Pokemon does not exist! Try again')
             return

@@ -45,7 +45,7 @@ function App() {
             if (input == pokemon.name) {
                 setGameStatus(false)
             }
-            const pokemonInfo = await getPokemonInfo(input)
+            const pokemonInfo:Pokemon = await getPokemonInfo(input)
             const hints: Hints = {
                 dexNumber: '',
                 name: '',

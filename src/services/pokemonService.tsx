@@ -3,13 +3,13 @@ import {romanToNumber} from "../utils/romanToNumber.tsx";
 
 
 export const getRandomPokemon = async (): Promise<Pokemon> => {
-    const dexNumber = Math.floor(Math.random() * 1025) + 1
+    const dexNumber = Math.floor(Math.random() * 1025)
     const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${dexNumber}`)
         .then((response) => response.json())
     const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${dexNumber}`)
         .then((response) => response.json())
     return {
-        dexNumber: dexNumber,
+        dexNumber: responsePokemon.id,
         name: responsePokemon.species.name,
         height: responsePokemon.height,
         weight: responsePokemon.weight,
@@ -26,7 +26,7 @@ export const getPokemonInfo = async (name: string): Promise<Pokemon> => {
         .then((response) => response.json())
     return {
         dexNumber: responsePokemon.id,
-        name: responsePokemon.name,
+        name: responsePokemon.species.name,
         height: responsePokemon.height,
         weight: responsePokemon.weight,
         url: responsePokemon.sprites.other['official-artwork'].front_default,
@@ -36,7 +36,7 @@ export const getPokemonInfo = async (name: string): Promise<Pokemon> => {
     }
 }
 
-export const checkPokemonExistance = async (name: string): Promise<boolean> => {
+export const checkPokemonExistence = async (name: string): Promise<boolean> => {
     const responsePokemon: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
     return responsePokemon.ok
 }
