@@ -1,5 +1,5 @@
 import GuessInput from "./GuessInput.tsx";
-import {fireEvent, render, screen, waitFor} from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import React from "react";
 import * as pokemonService from "../services/pokemonService";
