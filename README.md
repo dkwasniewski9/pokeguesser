@@ -34,7 +34,8 @@ The project is built using:
 
 ### Testing
 
-Unit tests have been implemented using `ts-jest` with `jsdom` environment. You can run the tests using:
+Unit tests have been implemented using `ts-jest` with `jsdom` environment. Tests have been created for only one component (`GuessInput`) and one service (`pokemonService`) in the project.
+You can run the tests using:
 
 ```bash
 npm run test
