@@ -2,7 +2,7 @@
 
 An application inspired by the game Wordle, but themed around Pokémon, where a new Pokémon is randomly chosen each time, ensuring gameplay variety.
 
-You can see the application in action here: [PokeGuesser on GitHub Pages](https://dkwasniewski9.github.io/pokeguesser/).
+You can see the application in action here: [PokeGuesser on GitHub Pages](https://dkwasniewski9.github.io/pokeguesser/). For presentation purposes, the Pokémon which is the answer is displayed in the console.
 
 ## Installation and Running
 
